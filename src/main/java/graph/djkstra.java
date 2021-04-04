@@ -34,7 +34,7 @@ public class djkstra {
    }
     //给定一个图中的节点，可以找到从该节点出发到图中所有其它节点之间的最短路径map表
     //及前驱节点表
-    HashMap<nodes,nodes> parentmap;
+    HashMap<nodes,nodes> parentmap1;
     public  HashMap<nodes, Integer> dikstrafind(nodes from) {
         HashMap<nodes, Integer> mindistancemap = new HashMap<nodes, Integer>();
         //记录from节点到图中所有节点的最短的距离。
@@ -115,7 +115,7 @@ public class djkstra {
     }
 
     int[][] matrix;
-    public void floyd(nodes[][] path,graphmap test) {
+   /*public void floyd(nodes[][] path,graphmap test) {
         matrix=new int[test.nodesmap.size()][test.nodesmap.size()];
         for (int i = 0; i < test.nodesmap.size(); i++) {
             for (int j = 0; j < test.nodesmap.size(); j++) {
@@ -136,5 +136,5 @@ public class djkstra {
                 }
             }
         }
-    }
+    }*/
 }
