@@ -23,6 +23,7 @@ public class testchannel {
         buf2.put("filechannel test".getBytes());
         buf2.flip();
         inChannel.write(buf2);
+        inChannel.position();
         while (bytesRead != -1) {
 
             System.out.println("Read " + bytesRead);
