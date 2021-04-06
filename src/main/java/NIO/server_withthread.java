@@ -11,7 +11,7 @@ public class server_withthread {
         try {
             ServerSocket server=new ServerSocket(8088);
             int rung=1;
-            while(rung==1){
+            while(rung==1){//BIO,同步阻塞I/O模型。
                 Socket socket=server.accept();
                 bethread thread=new bethread(socket);
                 thread.start();
