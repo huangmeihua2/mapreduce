@@ -27,6 +27,7 @@ public class server_withthread {
         public bethread(Socket s){
             super();
             this.socket=s;
+
         }
 
         @Override

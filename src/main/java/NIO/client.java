@@ -9,7 +9,7 @@ public class client {
 
         try {
             System.out.println("socket begin" + System.currentTimeMillis());
-            Socket socket=new Socket("localhost",8088);
+            Socket socket=new Socket("192.168.1.113",8088);
             System.out.println("socket end" + System.currentTimeMillis());
             Thread.sleep(3000);
             OutputStream out=socket.getOutputStream();

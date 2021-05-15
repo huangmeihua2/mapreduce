@@ -13,12 +13,12 @@ public class testwrite {
         MappedByteBuffer cur=writefilechannel.map(FileChannel.MapMode.READ_ONLY,0,5);
         writefilechannel.lock(1,10,false);
         try{
-            ByteBuffer buffer=ByteBuffer.allocate(40);
+            ByteBuffer buffer=ByteBuffer.allocate(40);//buffer缓冲区，
             //这种方式写入buffer的时候position不变的。
             System.out.println(buffer.position());
             int isremain= writefilechannel.read(buffer);
             System.out.println(buffer.position());
-           while(isremain!=-1){
+           while(isremain!=-1){//当从buffer中read完之后position会返回-1的
                buffer.flip();
                System.out.println(buffer.position());
                while(buffer.hasRemaining()){
