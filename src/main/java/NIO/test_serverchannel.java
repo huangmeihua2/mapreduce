@@ -8,14 +8,15 @@ import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.channels.ServerSocketChannel;
+import java.nio.channels.SocketChannel;
 
 public class test_serverchannel {
     public static void main(String[] args) throws IOException {
         ServerSocketChannel serversocketchannel=ServerSocketChannel.open();
-       
         ServerSocket serversocket=serversocketchannel.socket();
         serversocket.bind(new InetSocketAddress("localhost",8888));
         Socket socket=serversocket.accept();
+        SocketChannel cr=serversocketchannel.accept();
         InputStream input=socket.getInputStream();
         InputStreamReader inputreader=new InputStreamReader(input);
         char[] charr=new char[1024];
