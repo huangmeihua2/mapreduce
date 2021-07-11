@@ -22,16 +22,18 @@ public class test_channel_server {
             selector.select();
             Set<SelectionKey> set=selector.selectedKeys();//返回各个注册事件所对应的各就绪通道的集合
             Iterator<SelectionKey> iterator=set.iterator();
-            while(iterator.hasNext()){
+            while(iterator.hasNext()){//要及时消化掉事件
                 SelectionKey key=iterator.next();
                 iterator.remove();
-                if(key.isAcceptable()){//这个key不是下面那个key的，代表者的是不同的key的。
+                if(key.isAcceptable()){
+                    //这个key不是下面那个key的，代表者的是不同的key的,因为我前面注册了不同类型的key。
                     SocketChannel socketChannel=channel1.accept();
                     socketChannel.configureBlocking(false);
                     socketChannel.register(selector,SelectionKey.OP_WRITE);
                 }
                 if(key.isWritable()){
-                    SocketChannel socketChannel=(SocketChannel) key.channel();//次key可能并非是上面那个key因为上面那个key是serverchannel通道的。
+                    SocketChannel socketChannel=(SocketChannel) key.channel();
+                    //次key可能并非是上面那个key因为上面那个key是serverchannel通道的。
 
                     FileInputStream file=new FileInputStream("C:\\Users\\Administrator\\Desktop\\983120823456564.docx");
                     FileChannel fileChannel=file.getChannel();
