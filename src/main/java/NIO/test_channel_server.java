@@ -19,7 +19,7 @@ public class test_channel_server {
         channel1.register(selector, SelectionKey.OP_ACCEPT);
         boolean isrun=true;
         while(isrun){
-            selector.select();
+            selector.select();//该方法是阻塞的。
             Set<SelectionKey> set=selector.selectedKeys();//返回各个注册事件所对应的各就绪通道的集合
             Iterator<SelectionKey> iterator=set.iterator();
             while(iterator.hasNext()){//要及时消化掉事件
@@ -32,6 +32,7 @@ public class test_channel_server {
                     socketChannel.register(selector,SelectionKey.OP_WRITE);
                 }
                 if(key.isWritable()){
+                    //下面这个处理socketchannel的读写任务可以另起线程进行处理的，传入对应key就可以了。
                     SocketChannel socketChannel=(SocketChannel) key.channel();
                     //次key可能并非是上面那个key因为上面那个key是serverchannel通道的。
 

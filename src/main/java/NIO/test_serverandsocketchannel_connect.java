@@ -10,7 +10,7 @@ public class test_serverandsocketchannel_connect {
         long begin=0;
         long end=0;
         SocketChannel socket=SocketChannel.open();
-        socket.configureBlocking(false);//设置为非阻塞模式。
+        socket.configureBlocking(false); //设置为非阻塞模式。
         boolean isconnect=socket.connect(new InetSocketAddress("localhost",8888));
         Thread t=new Thread(){
             @Override

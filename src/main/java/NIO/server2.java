@@ -9,7 +9,6 @@ public class server2 {
         try {
             ServerSocket server=new ServerSocket(8088);
             Socket socket=server.accept();
-
             InputStream input=socket.getInputStream();
             ObjectInputStream object=new ObjectInputStream(input);
             int line=object.readInt();//查看流中有多少数据，创建对应的byte【】数组，一次读出。
