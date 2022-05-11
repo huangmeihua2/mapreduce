@@ -10,14 +10,15 @@ import java.util.concurrent.Future;
 
 public class AioClient {
     public static void main(String[] args) {
-        System.out.println("completed threadname"+Thread.currentThread().getName());
+        System.out.println("completed threadname" + Thread.currentThread().getName());
         try {
             AsynchronousSocketChannel asynchronousSocketChannel = AsynchronousSocketChannel.open();
             asynchronousSocketChannel.connect(new InetSocketAddress("localhost", 8088), null, new CompletionHandler<Void, Void>() {
                 @Override
                 public void completed(Void result, Void attachment) {
+                    // 也可以开启另一个线程进行异步写的操作
                     Future<Integer> integerFuture = asynchronousSocketChannel.write(ByteBuffer.wrap("你好，服务端，我来自客户端".getBytes()));
-                    System.out.println("completed threadname"+Thread.currentThread().getName());
+                    System.out.println("completed threadname" + Thread.currentThread().getName());
                     try {
                         System.out.println(integerFuture.get());
                     } catch (InterruptedException e) {
@@ -35,6 +36,6 @@ public class AioClient {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("completed threadname"+Thread.currentThread().getName());
+        System.out.println("completed threadname" + Thread.currentThread().getName());
     }
 }
